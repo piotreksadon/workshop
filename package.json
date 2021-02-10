@@ -27,6 +27,7 @@
     "@nestjs/platform-express": "^7.5.1",
     "@nestjs/typeorm": "^7.1.5",
     "class-validator": "^0.13.1",
+    "class-transformer": "^0.3.2",
     "email-validator": "^2.0.4",
     "mysql2": "^2.2.5",
     "reflect-metadata": "^0.1.13",

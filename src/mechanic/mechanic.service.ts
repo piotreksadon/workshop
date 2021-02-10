@@ -3,13 +3,13 @@ import { CreateMechanicDto } from './dto/create-mechanic.dto';
 import { UpdateMechanicDto } from './dto/update-mechanic.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Mechanic } from './entities/mechanic.entity';
+import { MechanicEntity } from './entity/mechanic.entity';
 
 @Injectable()
 export class MechanicService {
   constructor(
-    @InjectRepository(Mechanic)
-    private mechanicRepository: Repository<Mechanic>,
+    @InjectRepository(MechanicEntity)
+    private mechanicRepository: Repository<MechanicEntity>,
   ) {}
 
   create(data: CreateMechanicDto) {
@@ -21,7 +21,7 @@ export class MechanicService {
   }
 
   findAll() {
-    return this.mechanicRepository.find({});
+    return this.mechanicRepository.find();
   }
 
   findOne(id: number) {
