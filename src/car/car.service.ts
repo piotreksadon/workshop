@@ -29,7 +29,7 @@ export class CarService {
     return this.carRepository.findOne(+id);
   }
 
-  update(data: UpdateCarDto) {
+  update(id: number, data: UpdateCarDto) {
     return this.carRepository.save({
       brand: data.brand,
       model: data.model,

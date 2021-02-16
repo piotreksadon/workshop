@@ -1,6 +1,9 @@
 import { IsNotEmpty, IsNumber, IsString, Length } from 'class-validator';
+import { PartialType } from '@nestjs/mapped-types';
+import { CreateMechanicDto } from '../../mechanic/dto/create-mechanic.dto';
+import { CreateCarDto } from './create-car.dto';
 
-export class UpdateCarDto {
+export class UpdateCarDto extends PartialType(CreateCarDto) {
   @IsNotEmpty()
   @Length(2, 100)
   @IsString()
