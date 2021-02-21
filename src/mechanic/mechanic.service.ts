@@ -10,13 +10,15 @@ export class MechanicService {
   constructor(
     @InjectRepository(MechanicEntity)
     private mechanicRepository: Repository<MechanicEntity>,
-  ) {}
+  ) {
+  }
 
   create(data: CreateMechanicDto) {
     return this.mechanicRepository.save({
       mechanicName: data.name,
       mechanicLastName: data.lastName,
       mechanicEmail: data.email,
+      garageId: 1
     });
   }
 
@@ -25,7 +27,7 @@ export class MechanicService {
   }
 
   findOne(id: number) {
-    return this.mechanicRepository.findOne(+id);
+    return this.mechanicRepository.findOne(+id, { relations: ["cars"] });
   }
 
   update(id: number, data: UpdateMechanicDto) {

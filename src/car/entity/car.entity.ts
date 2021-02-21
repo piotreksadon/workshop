@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, ManyToOne } from 'typeorm';
+import { MechanicEntity } from '../../mechanic/entity/mechanic.entity';
 
-@Entity('car')
+@Entity('cars')
 export class CarEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -19,4 +20,10 @@ export class CarEntity {
 
   @Column({ nullable: false, type: 'varchar', length: 100 })
   color: string;
+
+  @Column()
+  mechanicId: number;
+
+  @ManyToOne(() => MechanicEntity, mechanic => mechanic.cars)
+  mechanic: MechanicEntity;
 }
