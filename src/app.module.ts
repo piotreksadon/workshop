@@ -2,19 +2,27 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { MechanicModule } from './mechanic/mechanic.module';
+import { CarModule } from './car/car.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
-      port: 3307,
+      port: 3306,
       username: 'root',
       password: 'root',
-      database: 'test',
-      entities: [`${__dirname}/**/entities/*.entity*{.ts,.js}`],
+      database: 'workshop',
+      entities: [`${__dirname}/**/**/*.entity{.ts,.js}`],
+      synchronize: true,
+      logging: true,
+    }),
+    MechanicModule,
+    CarModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+}

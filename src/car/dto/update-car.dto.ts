@@ -1,0 +1,30 @@
+import { IsNotEmpty, IsNumber, IsString, Length } from 'class-validator';
+import { PartialType } from '@nestjs/mapped-types';
+import { CreateMechanicDto } from '../../mechanic/dto/create-mechanic.dto';
+import { CreateCarDto } from './create-car.dto';
+
+export class UpdateCarDto extends PartialType(CreateCarDto) {
+  @IsNotEmpty()
+  @Length(2, 100)
+  @IsString()
+  brand: string;
+
+  @IsNotEmpty()
+  @Length(2, 100)
+  @IsString()
+  model: string;
+
+  @IsNotEmpty()
+  @IsNumber()
+  productionYear: number;
+
+  @IsNotEmpty()
+  @IsString()
+  @Length(2, 500)
+  repairNote: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @Length(2, 500)
+  color: string;
+}
