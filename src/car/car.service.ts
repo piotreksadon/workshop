@@ -18,7 +18,7 @@ export class CarService {
       productionYear: data.productionYear,
       color: data.color,
       repairNote: data.repairNote,
-      mechanicId: 2
+      mechanicId: 2,
     });
   }
 
